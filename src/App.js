@@ -1,28 +1,31 @@
-// jsxとはjavascriptのxml版のようなもの
-// 可読性が高い
-// 直感的にhtmlを表現できる
-import React, { Component } from "react";
+import React from "react";
 
-// クラスコンポーネント
-class App extends Component {
-  render() {
-    return (
-      <React.Fragment>
-      <label htmlFor="bar">bar</label>
-      <input type="text" onClick={() => {console.log("I am clicked.")}}></input>
-      </React.Fragment>
-    )
-  }
+const App = () => {
+  const profiles = [
+    { name: "Taro", age: "20"},
+    { name: "Hanako", age: "19"},
+    { name: "katada", age: "222"}
+  ]
+
+  return(
+    <React.Fragment>
+      {
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index}></User>
+        })
+      }
+    </React.Fragment>
+  )
 }
 
-// 関数コンポーネント
-// function App() {
-//   return (
-//     <React.Fragment>
-//     <label htmlFor="bar">bar</label>
-//     <input type="text" onClick={() => {console.log("I am clicked.")}}></input>
-//     </React.Fragment>
-//   );
-// }
+const User = (props) => {
+  return (
+    <div>Hi! I am {props.name} and {props.age}</div>
+  )
+}
+
+User.defaultProps = {
+  age: 1
+}
 
 export default App;
