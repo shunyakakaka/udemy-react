@@ -1,31 +1,31 @@
-import React from "react";
-import PropTypes from "prop-types";
-
+import React from 'react'
+import PropTypes from 'prop-types'
 const App = () => {
   const profiles = [
-    { name: "Taro", age: 20},
-    { name: "Hanako", age: 19},
-    { name: 1}
+    {name: "Taro", age: 10},
+    {name: "Hanako", age: 5},
+    {name: "NoName", age: 1000}
   ]
-
-  return(
-    <React.Fragment>
+  return (
+    <>
       {
         profiles.map((profile, index) => {
-          return <User name={profile.name} age={profile.age} key={index}></User>
+          return (
+            <User name={profile.name} age={profile.age} key={index}></User>
+          )
         })
       }
-    </React.Fragment>
+    </>
   )
 }
 
 const User = (props) => {
-  return (
-    <div>Hi! I am {props.name} and {props.age}</div>
+  return(
+    <h1>Hi, I am {props.name} and {props.age} years old </h1>
   )
 }
 
-User.propsTypes = {
+User.propTypes = {
   name: PropTypes.string,
   age: PropTypes.number.isRequired
 }
