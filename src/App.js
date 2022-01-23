@@ -7,7 +7,6 @@ const App = () => {
 
 const Counter = (props) => {
   const [Count, setCount] = useState(0)
-
   function PlusCount() {
     setCount(Count + 1)
   }
@@ -17,11 +16,11 @@ const Counter = (props) => {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <button onClick={() => PlusCount()}>+1</button>
       <button onClick={() => MinusCount()}>-1</button>
       <h1>Count: {Count}</h1>
-    </div>
+    </React.Fragment>
   )
 }
 
