@@ -1,33 +1,28 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 const App = () => {
-  const profiles = [
-    {name: "Taro", age: 10},
-    {name: "Hanako", age: 5},
-    {name: "NoName", age: 1000}
-  ]
   return (
-    <>
-      {
-        profiles.map((profile, index) => {
-          return (
-            <User name={profile.name} age={profile.age} key={index}></User>
-          )
-        })
-      }
-    </>
+    <Counter></Counter>
   )
 }
 
-const User = (props) => {
-  return(
-    <h1>Hi, I am {props.name} and {props.age} years old </h1>
-  )
-}
+const Counter = (props) => {
+  const [Count, setCount] = useState(0)
 
-User.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
+  function PlusCount() {
+    setCount(Count + 1)
+  }
+
+  function MinusCount() {
+    setCount(Count - 1)
+  }
+
+  return (
+    <div>
+      <button onClick={() => PlusCount()}>+1</button>
+      <button onClick={() => MinusCount()}>-1</button>
+      <h1>Count: {Count}</h1>
+    </div>
+  )
 }
 
 export default App;
